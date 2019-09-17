@@ -6,6 +6,7 @@
 #
 # WARNING! All changes made in this file will be lost!
 
+# NOTE: pyuic5 -x hello2.ui -o hello2-auto.py
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -38,9 +39,9 @@ class Ui_Dialog(object):
         self.horizontalLayout.addWidget(self.pushButton_3)
 
         self.retranslateUi(Dialog)
-        self.pushButton.clicked.connect(Dialog.slot_1st)
-        self.pushButton_2.clicked.connect(Dialog.slot_2nd)
-        self.pushButton_3.clicked.connect(Dialog.slot_3rd)
+        self.pushButton.clicked.connect(self.slot_1st)
+        self.pushButton_2.clicked.connect(self.slot_2nd)
+        self.pushButton_3.clicked.connect(self.slot_3rd)
         self.lineEdit.textChanged['QString'].connect(self.label.setText)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
@@ -51,6 +52,15 @@ class Ui_Dialog(object):
         self.pushButton.setText(_translate("Dialog", "첫번째 버튼"))
         self.pushButton_2.setText(_translate("Dialog", "두번째 버튼"))
         self.pushButton_3.setText(_translate("Dialog", "세번째 버튼"))
+
+    def slot_1st(self):
+        self.label.setText("첫번째 버튼")
+
+    def slot_2nd(self):
+        self.label.setText("두번째 버튼!")
+	
+    def slot_3rd(self):
+        self.label.setText("세번째 버튼?")
 
 
 if __name__ == "__main__":
